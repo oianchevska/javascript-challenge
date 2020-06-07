@@ -4,6 +4,7 @@ var tbody = d3.select("tbody");
 function tableBuilder(data) {
 
     tbody.selectAll("tr").remove();
+
     data.forEach(function (record) {
 
         var row = tbody.append("tr");
@@ -27,6 +28,7 @@ var findButton = d3.select("#filter-btn");
 
 
 findButton.on("click", function () {
+
     var inputDate = d3.select("#datetime").property("value")
     var inputCity = d3.select("#city").property("value")
     var inputState = d3.select("#state").property("value")
@@ -41,23 +43,21 @@ findButton.on("click", function () {
             if (inputCity !== "") {
 
                 cityFlag = rec["city"] === inputCity;
-            }
-            ;
+            };
 
             if (inputState !== "") {
                 stateFlag = rec["state"] === inputState;
-            }
-            ;
+            };
 
             if (inputDate !== "") {
                 dateFlag = rec["datetime"] === inputDate;
-            }
-            ;
+            };
 
 
             return dateFlag & cityFlag & stateFlag;
         }
     );
+
 
     tableBuilder(filteredData);
 
