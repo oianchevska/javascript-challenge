@@ -18,20 +18,36 @@ function tableBuilder(data) {
 
     });
 
-
 };
 
 
 tableBuilder(tableData);
 
 var findButton = d3.select("#filter-btn");
+
+
 findButton.on("click", function () {
     var inputDate = d3.select("#datetime").property("value")
-    console.log(inputDate)
+    var inputCity = d3.select("#city").property("value")
+    var inputState = d3.select("#state").property("value")
 
     var filteredData = tableData.filter(function (rec) {
 
+            var cityFlag = true;
+            var stateFlag = true;
             var dateFlag = true;
+
+
+            if (inputCity !== "") {
+
+                cityFlag = rec["city"] === inputCity;
+            }
+            ;
+
+            if (inputState !== "") {
+                stateFlag = rec["state"] === inputState;
+            }
+            ;
 
             if (inputDate !== "") {
                 dateFlag = rec["datetime"] === inputDate;
@@ -39,8 +55,7 @@ findButton.on("click", function () {
             ;
 
 
-            return dateFlag;
-
+            return dateFlag & cityFlag & stateFlag;
         }
     );
 
