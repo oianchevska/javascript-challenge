@@ -122,6 +122,19 @@ select {
   animation-delay: 1.2s;
 }
 
+
+.start {
+  position: relative;
+  height: 450px;
+  padding: 20px;
+  margin: 0;
+  background: lightgrey;
+  background-image: url("../images/start.jpg");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
 /* input placeholder color changes */
 .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */

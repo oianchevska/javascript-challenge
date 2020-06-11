@@ -32,12 +32,16 @@ findButton.on("click", function () {
     var inputDate = d3.select("#datetime").property("value")
     var inputCity = d3.select("#city").property("value")
     var inputState = d3.select("#state").property("value")
+    var inputCountry =d3.select("#country").property("value")
+    var inputShape = d3.select("#shape").property("value")
 
     var filteredData = tableData.filter(function (rec) {
 
             var cityFlag = true;
             var stateFlag = true;
             var dateFlag = true;
+            var countryFlag = true;
+            var shapeFlag = true;
 
 
             if (inputCity !== "") {
@@ -54,7 +58,17 @@ findButton.on("click", function () {
             };
 
 
-            return dateFlag & cityFlag & stateFlag;
+        if (inputCountry !== "") {
+
+            countryFlag = rec["city"] === inputCountry;
+        };
+
+        if (inputShape !== "") {
+
+            shapeFlag = rec["city"] === inputShape;
+        };
+
+            return dateFlag & cityFlag & stateFlag & countryFlag & shapeFlag;
         }
     );
 
